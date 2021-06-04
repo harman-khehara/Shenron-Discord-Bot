@@ -139,10 +139,18 @@ async def rmv_role(context, *, role_name):
 #----------------------------------------------------------------------------------
 
 # Register the "db-fact" command which will send a random fact about Dragon Ball
-@client.command(aliases=["dbfact", "DB-Fact", "db-Fact", "DB-FACT", "Db-fact", "Db-Fact"])
+@client.command(aliases=["dbfact", "DB-Fact", "db-Fact", "DB-FACT", "Db-fact", "Db-Fact", "db-fact", "fact"])
 async def db_fact(context):
     await context.channel.send(random.choice(db_facts_without_newline))
 
+#----------------------------------------------------------------------------------
+
+# Register the "on_command_error" event to detect when a user attempts to use a command that doesn't exist
+@client.event
+async def on_command_error(context, error):
+    if isinstance(error, commands.CommandNotFound):
+        await context.channel.send("The command '{0}' does not exist.".format(context.message.content[1 : len(context.message.content)]))
+        return
 #----------------------------------------------------------------------------------
 
 # Run the bot by retrieving the token from the .env file
