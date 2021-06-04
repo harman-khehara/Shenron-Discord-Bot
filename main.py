@@ -20,6 +20,22 @@ db_facts_file = open("dragon_ball_facts.txt", "r")
 db_facts = db_facts_file.readlines()
 db_facts_without_newline = []
 
+characters = {
+    goku: ['Goku is a Saiyan and the main protagonist of Dragon Ball. He is the husband of Chi-Chi and father of Gohan and Goten.', 'Images/goku.jpg'],
+    vegeta: ['Vegeta is the prince of the Saiyan race, the husband of Bulma, and father of Trunks and Bulla.', 'Images/vegeta.png'],
+    krillin: ['Krillin is a supporting protagonist in Dragon Ball, the husband of Android 18, and father of Marron.', 'Images/krillin.jpg'],
+    tien: ['Tien Shinhan is a martial artist and one of the strongest Earthlings in Dragon Ball. He is often seen training with his best friend Chiaotzu.', 'Images/tien.jpg'],
+    bulma: ['Bulma is a scientist and the daughter of the founder of Capsule Corporation. She is also the first friend of Goku, the wife of Vegeta, and mother of Trunks and Bulla.', 'Images/bulma.jpg'],
+    trunks: ['Trunks is a hybrid of an Earthling and Saiyan and is the son of Vegeta and Bulma and the older brother of Bulla. He also has a best friend named Goten.', 'Images/trunks.jpg'],
+    goten: ['Goten is a hybrid of an Earthling and Saiyan and is the son of Goku and Chi-Chi. He is the youngest Saiyan to turn Super Saiyan and the younger brother of Gohan.', 'Images/goten.jpg'],
+    gohan: ["Gohan is the son of Goku and Chi-Chi, the elder brother of Goten, the husband of Videl, and the father of Pan. He is named after Goku's grandfather, Gohan.", 'Images/gohan.jpg'],
+    chi-chi: ["Chi-Chi is the daughter of the Ox-King and the wife of Goku. She has two children named Goten and Gohan.", 'Images/chi-chi.png'],
+    beerus: ["Beerus is the God of Destruction of Universe 7 and is usually seen with his attendant Whis. He also has a twin brother named Champa.", 'Images/beerus.jpg'],
+    whis: ['Whis is an angel who is the martial arts teacher and attendant of Beerus.', 'Images/whis.jpg'],
+    piccolo: ["Piccolo is a Namekian who is the reincarnation of the Demon King Piccolo. He was once the enemy of Goku, but later became Earth's greatest hero.", 'Images/piccolo.jpg'],
+    yamcha: ["Yamcha was the main protagonist in both the Dragon Ball manga and anime, but later became a supporting protagonist in Dragon Ball Z and Dragon Ball Super. He is a martial artist and a very good baseball player. He also has a best friend named Puar.", 'Images/yamcha.jpg']
+}
+
 for fact in db_facts:
     split_fact = fact.split("\n")
     db_facts_without_newline.append(split_fact[0])
@@ -138,7 +154,7 @@ async def rmv_role(context, *, role_name):
 
 #----------------------------------------------------------------------------------
 
-# Register the "db-fact" command which will send a random fact about Dragon Ball
+# Register the "db_fact" command which will send a random fact about Dragon Ball
 @client.command(aliases=["dbfact", "DB-Fact", "db-Fact", "DB-FACT", "Db-fact", "Db-Fact", "db-fact", "fact"])
 async def db_fact(context):
     await context.channel.send(random.choice(db_facts_without_newline))
@@ -151,6 +167,18 @@ async def on_command_error(context, error):
     if isinstance(error, commands.CommandNotFound):
         await context.channel.send("The command '{0}' does not exist.".format(context.message.content[1 : len(context.message.content)]))
         return
+
+#----------------------------------------------------------------------------------
+
+# Register the "db_character" command to display a description and image of a specific Dragon Ball character
+@client.command(aliases=["dbchar", "char", "db-char", "db-character", "character"])
+async def db_character(context, *, character_name):
+    pass
+
+    # Check that the character_name is in the characters dictionary
+    # Search the dictionary to retrieve the character information
+    # Send the character information by using an Embed
+
 #----------------------------------------------------------------------------------
 
 # Run the bot by retrieving the token from the .env file
