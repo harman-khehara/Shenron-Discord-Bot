@@ -46,13 +46,14 @@ async def on_message(message):
 #----------------------------------------------------------------------------------
 
 # Register the "roles" command to return a list of all roles in the server, excludes the "@everyone" role
-@client.command()
+@client.command(aliases=["give-roles", "show-roles", "which-roles", "Roles"])
 async def roles(context):
     roles = context.guild.roles
     roles_str = ''
     for i in range(1, len(roles)):
-        roles_str = roles_str + " " + roles[i].name + ","
-    roles_str = roles_str[0 : len(roles_str) - 1]
+        if roles[i].is_bot_managed() is False:
+            roles_str = roles_str + " " + roles[i].name + ","
+    roles_str = roles_str[0 : len(roles_str) - 1] # Excludes the "@everyone" role which will always be the first element in the list of roles
 
     await context.channel.send(roles_str)
 
