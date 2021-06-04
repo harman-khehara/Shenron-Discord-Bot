@@ -2,6 +2,7 @@ import discord # Import the discord.py API wrapper
 import os # Import os to interact with the operating system
 from discord.ext import commands # Import commands to create commands for the bot
 from dotenv import load_dotenv
+import random
 
 #----------------------------------------------------------------------------------
 
@@ -14,6 +15,14 @@ client = commands.Bot(command_prefix = '$') # Initialize a Discord Bot which is 
 about_phrases_file = open('dragon_ball_about_phrases.txt', 'r')
 about_phrases_list = about_phrases_file.readlines()
 about_phrases_without_newline = [] # About phrases with no newline character
+
+db_facts_file = open("dragon_ball_facts.txt", "r")
+db_facts = db_facts_file.readlines()
+db_facts_without_newline = []
+
+for fact in db_facts:
+    split_fact = fact.split("\n")
+    db_facts_without_newline.append(split_fact[0])
 
 for phrase in about_phrases_list:
     split_phrase = phrase.split("\n")
@@ -60,7 +69,7 @@ async def roles(context):
 #----------------------------------------------------------------------------------
 
 #Register the "set_role" command which allows a user to set their role
-@client.command(aliases = ["set-role", "Set-role", "Set-Role", "set-Role", "SET-ROLE"])
+@client.command(aliases = ["set-role", "Set-role", "Set-Role", "set-Role", "SET-ROLE", "setrole"])
 async def set_role(context, *, role_name):
 
     # Server member already has role
@@ -92,7 +101,7 @@ async def set_role(context, *, role_name):
 #----------------------------------------------------------------------------------
 
 # Register the "rmv_role" command which allows a user to remove their role
-@client.command(aliases = ["rmv-role", "Rmv-role", "Rmv-Role", "rmv-Role", "RMV-ROLE"])
+@client.command(aliases = ["rmv-role", "Rmv-role", "Rmv-Role", "rmv-Role", "RMV-ROLE", "rmvrole"])
 async def rmv_role(context, *, role_name):
 
     # Role provided does not exist in server
@@ -126,6 +135,13 @@ async def rmv_role(context, *, role_name):
     if member_has_role is True:
         await context.author.remove_roles(role_to_remove)
         await context.channel.send("{0} no longer has the role {1}.".format(context.author, role_name))
+
+#----------------------------------------------------------------------------------
+
+# Register the "db-fact" command which will send a random fact about Dragon Ball
+@client.command(aliases=["dbfact", "DB-Fact", "db-Fact", "DB-FACT", "Db-fact", "Db-Fact"])
+async def db_fact(context):
+    await context.channel.send(random.choice(db_facts_without_newline))
 
 #----------------------------------------------------------------------------------
 
