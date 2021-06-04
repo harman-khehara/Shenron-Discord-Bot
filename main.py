@@ -45,7 +45,7 @@ async def on_message(message):
     await client.process_commands(message) # Need this line of code to run commands when overriding the on_message event
 #----------------------------------------------------------------------------------
 
-# Register the "roles" command to return a list of all roles in the server
+# Register the "roles" command to return a list of all roles in the server, excludes the "@everyone" role
 @client.command()
 async def roles(context):
     roles = context.guild.roles
@@ -55,6 +55,33 @@ async def roles(context):
     roles_str = roles_str[0 : len(roles_str) - 1]
 
     await context.channel.send(roles_str)
+
+#----------------------------------------------------------------------------------
+
+#Register the "set_role" command which allows a user to set their role
+@client.command(aliases = ["set-role", "Set-role", "Set-Role"])
+async def set_role(context, *, role_name):
+
+    # Server member already has role
+    for role in context.author.roles:
+        if role_name == role.name:
+            await context.channel.send("{0} already has this role.".format(context.author))
+            return
+    
+    # Role provided does not exist in server
+    role_exists = False
+    for role1 in context.guild.roles:
+        if role_name == role1.name:
+            role_exists = True
+            role_to_give = role1
+
+    if role_exists is False:
+        await context.channel.send("The role '{0}' does not exist.".format(role_name))
+        return
+    
+    # Role can be given to server member
+    await context.author.add_roles(role_to_give)
+    await context.channel.send("{0} has been assigned the role {1}.".format(context.author, role_name))
 
 #----------------------------------------------------------------------------------
 
