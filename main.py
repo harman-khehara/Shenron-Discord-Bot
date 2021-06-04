@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv() # Load environment variables from .env file
 
 #client = discord.Client() # Initialize a client to connect to the Discord application
-client = commands.Bot(command_prefix = '$') # Initialize a Discord bot which is an extended version of the Discord client
+client = commands.Bot(command_prefix = '$') # Initialize a Discord Bot which is an extended version of the Discord Client
 
 # Variable declarations 
 about_phrases_file = open('dragon_ball_about_phrases.txt', 'r')
@@ -80,6 +80,11 @@ async def set_role(context, *, role_name):
         await context.channel.send("The role '{0}' does not exist.".format(role_name))
         return
     
+    # Role is a bot managed role
+    if role_to_give.is_bot_managed():
+        await context.channel.send("The role {0} can only be assigned to Discord Bots".format(role_to_give.name))
+        return 
+
     # Role can be given to server member
     await context.author.add_roles(role_to_give)
     await context.channel.send("{0} has been assigned the role {1}.".format(context.author, role_name))
@@ -106,11 +111,18 @@ async def rmv_role(context, *, role_name):
         if role_name == role.name:
             member_has_role = True
             role_to_remove = role
-
+    
+    # Member does not already have the role
     if member_has_role is False:
         await context.channel.send("{0} is not assigned the role {1}.".format(context.author, role_name))
         return
-            
+
+    # Member is trying to remove the "@everyone" role 
+    if role_to_remove.name == "@everyone":
+        await context.channel.send("The role {0} cannot be removed".format(role_to_remove.name))
+        return
+
+    # Member role can be removed
     if member_has_role is True:
         await context.author.remove_roles(role_to_remove)
         await context.channel.send("{0} no longer has the role {1}.".format(context.author, role_name))
