@@ -59,7 +59,7 @@ async def roles(context):
 #----------------------------------------------------------------------------------
 
 #Register the "set_role" command which allows a user to set their role
-@client.command(aliases = ["set-role", "Set-role", "Set-Role"])
+@client.command(aliases = ["set-role", "Set-role", "Set-Role", "set-Role", "SET-ROLE"])
 async def set_role(context, *, role_name):
 
     # Server member already has role
@@ -82,6 +82,37 @@ async def set_role(context, *, role_name):
     # Role can be given to server member
     await context.author.add_roles(role_to_give)
     await context.channel.send("{0} has been assigned the role {1}.".format(context.author, role_name))
+
+#----------------------------------------------------------------------------------
+
+# Register the "rmv_role" command which allows a user to remove their role
+@client.command(aliases = ["rmv-role", "Rmv-role", "Rmv-Role", "rmv-Role", "RMV-ROLE"])
+async def rmv_role(context, *, role_name):
+
+    # Role provided does not exist in server
+    role_exists = False
+    for role1 in context.guild.roles:
+        if role_name == role1.name:
+            role_exists = True
+
+    if role_exists is False:
+        await context.channel.send("The role '{0}' does not exist.".format(role_name))
+        return
+
+    # Make sure server member is already assigned the role
+    member_has_role = False
+    for role in context.author.roles:
+        if role_name == role.name:
+            member_has_role = True
+            role_to_remove = role
+
+    if member_has_role is False:
+        await context.channel.send("{0} is not assigned the role {1}.".format(context.author, role_name))
+        return
+            
+    if member_has_role is True:
+        await context.author.remove_roles(role_to_remove)
+        await context.channel.send("{0} no longer has the role {1}.".format(context.author, role_name))
 
 #----------------------------------------------------------------------------------
 
