@@ -21,19 +21,19 @@ db_facts = db_facts_file.readlines()
 db_facts_without_newline = []
 
 characters = {
-    goku: ['Goku is a Saiyan and the main protagonist of Dragon Ball. He is the husband of Chi-Chi and father of Gohan and Goten.', 'Images/goku.jpg'],
-    vegeta: ['Vegeta is the prince of the Saiyan race, the husband of Bulma, and father of Trunks and Bulla.', 'Images/vegeta.png'],
-    krillin: ['Krillin is a supporting protagonist in Dragon Ball, the husband of Android 18, and father of Marron.', 'Images/krillin.jpg'],
-    tien: ['Tien Shinhan is a martial artist and one of the strongest Earthlings in Dragon Ball. He is often seen training with his best friend Chiaotzu.', 'Images/tien.jpg'],
-    bulma: ['Bulma is a scientist and the daughter of the founder of Capsule Corporation. She is also the first friend of Goku, the wife of Vegeta, and mother of Trunks and Bulla.', 'Images/bulma.jpg'],
-    trunks: ['Trunks is a hybrid of an Earthling and Saiyan and is the son of Vegeta and Bulma and the older brother of Bulla. He also has a best friend named Goten.', 'Images/trunks.jpg'],
-    goten: ['Goten is a hybrid of an Earthling and Saiyan and is the son of Goku and Chi-Chi. He is the youngest Saiyan to turn Super Saiyan and the younger brother of Gohan.', 'Images/goten.jpg'],
-    gohan: ["Gohan is the son of Goku and Chi-Chi, the elder brother of Goten, the husband of Videl, and the father of Pan. He is named after Goku's grandfather, Gohan.", 'Images/gohan.jpg'],
-    chi-chi: ["Chi-Chi is the daughter of the Ox-King and the wife of Goku. She has two children named Goten and Gohan.", 'Images/chi-chi.png'],
-    beerus: ["Beerus is the God of Destruction of Universe 7 and is usually seen with his attendant Whis. He also has a twin brother named Champa.", 'Images/beerus.jpg'],
-    whis: ['Whis is an angel who is the martial arts teacher and attendant of Beerus.', 'Images/whis.jpg'],
-    piccolo: ["Piccolo is a Namekian who is the reincarnation of the Demon King Piccolo. He was once the enemy of Goku, but later became Earth's greatest hero.", 'Images/piccolo.jpg'],
-    yamcha: ["Yamcha was the main protagonist in both the Dragon Ball manga and anime, but later became a supporting protagonist in Dragon Ball Z and Dragon Ball Super. He is a martial artist and a very good baseball player. He also has a best friend named Puar.", 'Images/yamcha.jpg']
+    'goku': ['Goku is a Saiyan and the main protagonist of Dragon Ball. He is the husband of Chi-Chi and father of Gohan and Goten.', 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/goku.jpg'],
+    'vegeta': ['Vegeta is the prince of the Saiyan race, the husband of Bulma, and father of Trunks and Bulla.', 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/vegeta.png'],
+    'krillin': ['Krillin is a supporting protagonist in Dragon Ball, the husband of Android 18, and father of Marron.', 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/krillin.jpg'],
+    'tien': ['Tien Shinhan is a martial artist and one of the strongest Earthlings in Dragon Ball. He is often seen training with his best friend Chiaotzu.', 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/tien.jpg'],
+    'bulma': ['Bulma is a scientist and the daughter of the founder of Capsule Corporation. She is also the first friend of Goku, the wife of Vegeta, and mother of Trunks and Bulla.', 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/bulma.jpg'],
+    'trunks': ['Trunks is a hybrid of an Earthling and Saiyan and is the son of Vegeta and Bulma and the older brother of Bulla. He also has a best friend named Goten.', 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/trunks.jpg'],
+    'goten': ['Goten is a hybrid of an Earthling and Saiyan and is the son of Goku and Chi-Chi. He is the youngest Saiyan to turn Super Saiyan and the younger brother of Gohan.', 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/goten.jpg'],
+    'gohan': ["Gohan is the son of Goku and Chi-Chi, the elder brother of Goten, the husband of Videl, and the father of Pan. He is named after Goku's grandfather, Gohan.", 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/gohan.jpg'],
+    'chi-chi': ["Chi-Chi is the daughter of the Ox-King and the wife of Goku. She has two children named Goten and Gohan.", 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/chi-chi.png'],
+    'beerus': ["Beerus is the God of Destruction of Universe 7 and is usually seen with his attendant Whis. He also has a twin brother named Champa.", 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/beerus.jpg'],
+    'whis': ['Whis is an angel who is the martial arts teacher and attendant of Beerus.', 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/whis.jpg'],
+    'piccolo': ["Piccolo is a Namekian who is the reincarnation of the Demon King Piccolo. He was once the enemy of Goku, but later became Earth's greatest hero.", 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/piccolo.jpg'],
+    'yamcha': ["Yamcha was the main protagonist in both the Dragon Ball manga and anime, but later became a supporting protagonist in Dragon Ball Z and Dragon Ball Super. He is a martial artist and a very good baseball player. He also has a best friend named Puar.", 'https://raw.githubusercontent.com/harman-khehara/Shenron-Discord-Bot/main/Images/yamcha.jpg']
 }
 
 for fact in db_facts:
@@ -173,12 +173,28 @@ async def on_command_error(context, error):
 # Register the "db_character" command to display a description and image of a specific Dragon Ball character
 @client.command(aliases=["dbchar", "char", "db-char", "db-character", "character"])
 async def db_character(context, *, character_name):
-    pass
 
     # Check that the character_name is in the characters dictionary
+    char_exists = False
+    for character in characters.keys():
+        if character == character_name.lower():
+            char_exists = True
+    
+    if char_exists is False:
+        await context.channel.send("The character '{0}' does not exist in Dragon Ball.".format(character_name))
+        return
+    
     # Search the dictionary to retrieve the character information
-    # Send the character information by using an Embed
+    char_description = characters[character_name.lower()][0]
+    char_img = characters[character_name.lower()][1]
 
+    # Send the character information by using an Embed
+    embed1 = discord.Embed(title = character_name.upper(), description = "Character Description")
+
+    embed1.add_field(name = "---", value = char_description)
+    embed1.set_image(url = char_img)
+
+    await context.channel.send(embed = embed1)
 #----------------------------------------------------------------------------------
 
 # Run the bot by retrieving the token from the .env file
