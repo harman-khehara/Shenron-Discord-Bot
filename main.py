@@ -65,7 +65,7 @@ async def on_message(message):
     for phrase in about_phrases_without_newline:
         if message.content.lower().startswith(phrase):
             # await will stop the execution of the function until the bot successfully sends out the Wikipedia link
-            await message.channel.send('You should check this out...https://en.wikipedia.org/wiki/Dragon_Ball')
+            await message.channel.send("You should check this out..." + "https://en.wikipedia.org/wiki/Dragon_Ball")
 
     await client.process_commands(message) # Need this line of code to run commands when overriding the on_message event
 #----------------------------------------------------------------------------------
@@ -77,8 +77,7 @@ async def roles(context):
     roles_str = ''
     for i in range(1, len(roles)):
         if roles[i].is_bot_managed() is False:
-            roles_str = roles_str + " " + roles[i].name + ","
-    roles_str = roles_str[0 : len(roles_str) - 1] # Excludes the "@everyone" role which will always be the first element in the list of roles
+            roles_str = roles_str + "- {0}\n".format(roles[i].name)
 
     await context.channel.send(roles_str)
 
@@ -161,15 +160,6 @@ async def db_fact(context):
 
 #----------------------------------------------------------------------------------
 
-# Register the "on_command_error" event to detect when a user attempts to use a command that doesn't exist
-@client.event
-async def on_command_error(context, error):
-    if isinstance(error, commands.CommandNotFound):
-        await context.channel.send("The command '{0}' does not exist.".format(context.message.content[1 : len(context.message.content)]))
-        return
-
-#----------------------------------------------------------------------------------
-
 # Register the "db_character" command to display a description and image of a specific Dragon Ball character
 @client.command(aliases=["dbchar", "char", "db-char", "db-character", "character"])
 async def db_character(context, *, character_name):
@@ -195,6 +185,51 @@ async def db_character(context, *, character_name):
     embed1.set_image(url = char_img)
 
     await context.channel.send(embed = embed1)
+
+#----------------------------------------------------------------------------------
+
+# Register the "chars" command to view a list of characters in Dragon Ball
+@client.command(aliases=['which-chars', 'which-characters'])
+async def chars(context):
+
+    characters_str = ''
+    for character in characters.keys():
+        characters_str = characters_str + "- {0}\n".format(character.upper())
+
+    await context.channel.send(characters_str)
+
+#----------------------------------------------------------------------------------
+
+# ERROR CHECKING
+
+# Register the "on_command_error" event to detect when a user attempts to use a command that doesn't exist
+@client.event
+async def on_command_error(context, error):
+    if isinstance(error, commands.CommandNotFound):
+        await context.channel.send("The command '{0}' does not exist.".format(context.message.content[1 : len(context.message.content)]))
+        return
+
+# Register the "db_character_error" error checker to check if the character parameter is missing
+@db_character.error
+async def db_character_error(context, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await context.channel.send("Please specify which character you would like to see more information about. A list of characters can be viewed using the '$chars' command.")
+        return
+
+# Register the "set_role_error" error checker to check if the role to be assigned parameter is missing
+@set_role.error
+async def set_role_error(context, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await context.channel.send("Please specify the role you would like to be assigned. A list of available roles can be viewed using the '$roles' command.")
+        return
+
+# Register the "rmv_role_error" error checker to check if the role to be removed parameter is missing
+@rmv_role.error
+async def rmv_role_error(context, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await context.channel.send("Please specify the role you would like to remove.")
+        return
+
 #----------------------------------------------------------------------------------
 
 # Run the bot by retrieving the token from the .env file
