@@ -40,6 +40,9 @@
 </ul>
 
 <p>Next, <code>git clone</code> this repostiory.</code></p>
+
+<ol>
+  <li>If you plan to use a <code>.env</code> to store the token for the bot, follow the steps listed under (1.).
 <ul>
   <li>If you are going to use a <code>.env</code> file to store your token, make sure the <code>.env</code> file is stored in the same directory as the <code>main.py</code> file.
   </li>
@@ -48,6 +51,29 @@
   <li>Open the </code>main.py</code> file and enter the token you previously copied where it says 'TOKEN':
   </li>
 </ul>
+</li>
+
+<li>If you don't plan to use a <code>.env</code> file to store your token, follow the steps listed under (2.)
+  <ul>
+    <li>Remove the following lines of code which include support for the use of a <code>.env</code> file:</li>
+    
+     
+      ...
+    
+      from dotenv import load_dotenv # Remove this line
+      
+      ...
+      
+      load_dotenv() # Remove this line
+      
+      ... 
+      
+      client.run(os.getenv('TOKEN')) # Change this line to --> client.run('TOKEN') # <-- Enter your token where it says TOKEN
+      
+      ...
+     
+  </ul>
+</li>
 
 
  
