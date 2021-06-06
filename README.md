@@ -2,6 +2,14 @@
 
 <p>Shenron is a Discord Bot designed to interact with users on Discord by answering commands and questions relating to the popular <a href="https://en.wikipedia.org/wiki/Dragon_Ball">Dragon Ball franchise</a>. In the Dragon Ball series, Shenron is a magical wish-granting dragon. The name of this Discord Bot comes from Shenron's ability to answer questions pertaining to almost anything within the Dragon Ball universe. The Shenron Discord Bot allows users to perform various actions within Discord such as adding or removing roles, in addition to allowing users to make use of additional Dragon Ball themed commands.</p>
 
+<img width="297" height="97" src="README_Images/shenron.png">
+
+<h2>Table of Contents</h2>
+<a href="#features">Features & Functionality</a>
+<a href="#installation">Installation Requirements</a>
+
+<h2 id="features">Features & Functionality</h2>
+
 <h2 id="installation">Installation Requirements</h2>
 
 <p>Ensure that you have <code>Python 3</code> or higher installed on your device. Note that <code>Python 3.5.3</code> or higher is required for the discord.py API wrapper. Additionally, ensure you have added Python to your PATH variable on your operating system to be able to use Python commands in the terminal.</p>
