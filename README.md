@@ -57,6 +57,8 @@
     <ul>
       <li>Remove the following lines of code from <code>main.py</code> which include support for the use of a <code>.env</code> file:
       </li>
+    </ul>
+      
      
       ...
     
@@ -71,8 +73,7 @@
       client.run(os.getenv('TOKEN')) # Change this line to --> client.run('TOKEN') # <-- Enter your token where it says TOKEN
       
       ...
-     
-    </ul>
+      
   </li>
 </ol>
 
