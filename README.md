@@ -2,7 +2,7 @@
 
 <h2 id="installation">Installation Requirements</h2>
 
-<p>Ensure that you have <code>Python 3</code> or higher installed on your device. Note that <code>Python 3.5.3</code> or higher is required for the discord.py API wrapper.</p>
+<p>Ensure that you have <code>Python 3</code> or higher installed on your device. Note that <code>Python 3.5.3</code> or higher is required for the discord.py API wrapper. Additionally, ensure you have added Python to your PATH variable on your operating system to be able to use Python commands in the terminal.</p>
 
 <ol>
   <li>First, create a Discord Bot account by logging in to the Discord website and then navigating to the <a href="https://discord.com/developers/applications">application</a> page.
@@ -74,7 +74,11 @@
      
   </ul>
 </li>
+</ol>
 
+<p>Now use the <code>cd</code> on Command Prompt for Windows or Terminal for macOS/Linux to change the current directory to the location of the <code>main.py</code> file.</p>
+<p>Use the following command to run <code>main.py</code> on Windows: <code>py -3 main.py</code></p>
+<p>Use the following command to run <code>main.py</code> on macOS/Linux: <code>python3 main.py</code></p>
 
  
 
