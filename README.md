@@ -43,20 +43,20 @@
 
 <ol>
   <li>If you plan to use a <code>.env</code> to store the token for the bot, follow the steps listed under (1.).
-<ul>
-  <li>If you are going to use a <code>.env</code> file to store your token, make sure the <code>.env</code> file is stored in the same directory as the <code>main.py</code> file.
+    <ul>
+      <li>If you are going to use a <code>.env</code> file to store your token, make sure the <code>.env</code> file is stored in the same directory as the <code>main.py</code>  file.
+      </li>
+      <li>If you are using a <code>.env</code> file, install the <code>Python-dotenv</code> package using the following command: <code>pip install python-dotenv</code>. Note that <code>Python 3.4</code> or higher already comes with an installation of the pip package installer.
+      </li>
+      <li>Open the </code>main.py</code> file and enter the token you previously copied where it says 'TOKEN':
+      </li>
+    </ul>
   </li>
-  <li>If you are using a <code>.env</code> file, install the <code>Python-dotenv</code> package using the following command: <code>pip install python-dotenv</code>. Note that <code>Python 3.4</code> or higher already comes with an installation of the pip package installer.
-  </li>
-  <li>Open the </code>main.py</code> file and enter the token you previously copied where it says 'TOKEN':
-  </li>
-</ul>
-</li>
 
-<li>If you don't plan to use a <code>.env</code> file to store your token, follow the steps listed under (2.).
-  <ul>
-    <li>Remove the following lines of code from <code>main.py</code> which include support for the use of a <code>.env</code> file:</li>
-    
+  <li>If you don't plan to use a <code>.env</code> file to store your token, follow the steps listed under (2.).
+    <ul>
+      <li>Remove the following lines of code from <code>main.py</code> which include support for the use of a <code>.env</code> file:
+      </li>
      
       ...
     
@@ -72,13 +72,17 @@
       
       ...
      
-  </ul>
-</li>
+    </ul>
+  </li>
 </ol>
 
 <p>Now use the <code>cd</code> command on Command Prompt for Windows or Terminal for macOS/Linux to change the current directory to the location of the <code>main.py</code> file.</p>
 <p>Use the following command to run <code>main.py</code> on Windows: <code>py -3 main.py</code></p>
 <p>Use the following command to run <code>main.py</code> on macOS/Linux: <code>python3 main.py</code></p>
+
+</p>When the above commands are complete, you should see "Successfully logged in as <code>YOUR_BOT_USERNAME#XXXX</code>" which indicates that your bot is ready to be used.</p>
+
+
 
  
 
