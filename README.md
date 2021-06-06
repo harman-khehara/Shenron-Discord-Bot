@@ -211,11 +211,12 @@
 
 <h2 id="tech">Technical Framework</h2>
 
+<p>The Shenron Discord Bot was developed in Python3 using the discord.py API wrapper and VSCode.</p>
+
 <h2 id="contributors">Contributors</h2>
 
+<p>The entirety of this project was coded and developed by Harman Khehara.</p>
+
 <h2 id="notes">Notes</h2>
- 
 
-
-  
-  
+<p>This Discord Bot does not run forever, it runs for a continuous period of time when the associated Python script is run.</p>
