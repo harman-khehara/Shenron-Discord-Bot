@@ -53,9 +53,9 @@
 </ul>
 </li>
 
-<li>If you don't plan to use a <code>.env</code> file to store your token, follow the steps listed under (2.)
+<li>If you don't plan to use a <code>.env</code> file to store your token, follow the steps listed under (2.).
   <ul>
-    <li>Remove the following lines of code which include support for the use of a <code>.env</code> file:</li>
+    <li>Remove the following lines of code from <code>main.py</code> which include support for the use of a <code>.env</code> file:</li>
     
      
       ...
