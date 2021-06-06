@@ -5,8 +5,13 @@
 <img width="297" height="97" src="README_Images/shenron.png">
 
 <h2>Table of Contents</h2>
-<a href="#features">Features & Functionality</a>
-<a href="#installation">Installation Requirements</a>
+<ul>
+  <li><a href="#features">Features & Functionality</a></li>
+  <li><a href="#installation">Installation Requirements</a></li>
+  <li><a href="#tech">Technical Framework</a></li>
+  <li><a href="#contributors">Contributors</a></li>
+  <li><a href="#notes">Notes</a></li>
+</ul>
 
 <h2 id="features">Features & Functionality</h2>
 
@@ -93,8 +98,11 @@
 
 </p>When the above commands are complete, you should see "Successfully logged in as <code>YOUR_BOT_USERNAME#XXXX</code>" which indicates that your bot is ready to be used.</p>
 
+<h2 id="tech">Technical Framework</h2>
 
+<h2 id="contributors">Contributors</h2>
 
+<h2 id="notes">Notes</h2>
  
 
 
