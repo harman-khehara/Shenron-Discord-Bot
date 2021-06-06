@@ -76,7 +76,7 @@
 </li>
 </ol>
 
-<p>Now use the <code>cd</code> on Command Prompt for Windows or Terminal for macOS/Linux to change the current directory to the location of the <code>main.py</code> file.</p>
+<p>Now use the <code>cd</code> Command Prompt for Windows or Terminal for macOS/Linux to change the current directory to the location of the <code>main.py</code> file.</p>
 <p>Use the following command to run <code>main.py</code> on Windows: <code>py -3 main.py</code></p>
 <p>Use the following command to run <code>main.py</code> on macOS/Linux: <code>python3 main.py</code></p>
 
