@@ -15,6 +15,40 @@
 
 <h2 id="features">Features & Functionality</h2>
 
+<p>All commands require the "$" symbol before the command name to be recognized as a command by the Shenron Discord Bot.</p>
+
+<dl>
+  <dt>$roles command</dt>
+  <dd>This command displays all roles available in the Discord server.</dd>
+  <table>
+    <tr>
+      <th>
+        <img> width="1056" height"180" src="README_Images/roles_help.png">
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <img> width="341" height"669" src="README_Images/roles.png">
+      </th>
+    </tr>
+  </table>
+  
+  <dt>$set_role command</dt>
+  <dd>This command sets the user's role to the specified role.</dd>
+  <table>
+    <tr>
+      <th>
+        <img> width="1052" height"181" src="README_Images/set_role_hlep.png">
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <img> width="1089" height"645" src="README_Images/set_role.png">
+      </th>
+    </tr>
+  </table>
+</dl>
+
 <h2 id="installation">Installation Requirements</h2>
 
 <p>Ensure that you have <code>Python 3</code> or higher installed on your device. Note that <code>Python 3.5.3</code> or higher is required for the discord.py API wrapper. Additionally, ensure you have added Python to your PATH variable on your operating system to be able to use Python commands in the terminal.</p>
