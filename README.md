@@ -19,34 +19,111 @@
 
 <dl>
   <dt>$roles command</dt>
-  <dd>This command displays all roles available in the Discord server.</dd>
+  <dd>This command displays all roles available in the Discord server.
   <table>
     <tr>
       <th>
-        <img> width="1056" height"180" src="README_Images/roles_help.png">
+        <img width="1056" height"180" src="README_Images/roles_help.png">
       </th>
     </tr>
     <tr>
       <th>
-        <img> width="341" height"669" src="README_Images/roles.png">
+        <img width="341" height"669" src="README_Images/roles.png">
       </th>
     </tr>
   </table>
+  </dd>
   
   <dt>$set_role command</dt>
-  <dd>This command sets the user's role to the specified role.</dd>
+  <dd>This command sets the user's role to the specified role.
   <table>
     <tr>
       <th>
-        <img> width="1052" height"181" src="README_Images/set_role_hlep.png">
+        <img width="1052" height"181" src="README_Images/set_role_help.png">
       </th>
     </tr>
     <tr>
       <th>
-        <img> width="1089" height"645" src="README_Images/set_role.png">
+        <img width="1089" height"645" src="README_Images/set_role.png">
       </th>
     </tr>
   </table>
+  </dd>
+  
+  <dt>$rmv_role command</dt>
+  <dd>This command removes the user's specified role.
+  <table>
+    <tr>
+      <th>
+        <img width="1057" height"183" src="README_Images/rmv_role_help.png">
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <img width="508" height"484" src="README_Images/rmv_role.png">
+      </th>
+    </tr>
+  </table>
+  </dd>
+  
+  <dt>$db_fact command</dt>
+  <dd>This command returns a random interesting fact about Dragon Ball.
+  <table>
+    <tr>
+      <th>
+        <img width="1060" height"186" src="README_Images/db_fact_help.png">
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <img width="608" height"490" src="README_Images/db_fact.png">
+      </th>
+    </tr>
+  </table>
+  </dd>
+  
+  <dt>$chars command</dt>
+  <dd>This command returns a list of characters in Dragon Ball.
+  <table>
+    <tr>
+      <th>
+        <img width="1042" height"176" src="README_Images/chars_help.png">
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <img width="323" height"480" src="README_Images/chars.png">
+      </th>
+    </tr>
+  </table>
+  </dd>
+  
+  <dt>$db_character command</dt>
+  <dd>This command returns a description of the specified character.
+  <table>
+    <tr>
+      <th>
+        <img width="1061" height"177" src="README_Images/db_char_help.png">
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <img width="1106" height"825" src="README_Images/db_char.png">
+      </th>
+    </tr>
+  </table>
+  </dd>
+  
+  <dt>Responding to Messages</dt>
+  <dd>The Shenron Discord Bot is able to respond to messages regarding any questions about Dragon Ball.
+  <table>
+    <tr>
+      <th>
+        <img width="861" height"354" src="README_Images/about_dragon_ball.png">
+      </th>
+    </tr>
+  </table>
+  </dd>
 </dl>
 
 <h2 id="installation">Installation Requirements</h2>
